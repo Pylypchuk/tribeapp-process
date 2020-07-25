@@ -1,0 +1,5 @@
+server:
+  port: ${PORT:8182}
+  tomcat:
+    max-swallow-size: -1
+
