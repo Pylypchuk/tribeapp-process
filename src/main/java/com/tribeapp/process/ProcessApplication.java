@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @EnableProcessApplication
 public class ProcessApplication {
-
     public static void main(final String[] args) {
         SpringApplication.run(ProcessApplication.class, args);
     }
