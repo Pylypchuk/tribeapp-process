@@ -7,10 +7,10 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://${DATABASE_HOST:localhost}:${DATABASE_PORT:5432}/${DATABASE_NAME:tribeappprocess}
+    url: jdbc:postgresql://${DATABASE_HOST:ec2-54-75-248-49.eu-west-1.compute.amazonaws.com}:${DATABASE_PORT:5432}/${DATABASE_NAME:dcvor9eb9mft56}?sslmode=require
     jdbcUrl: ${spring.datasource.url}
-    username: ${DATABASE_USER:dev}
-    password: ${DATABASE_PASSWORD:dev}
+    username: ${DATABASE_USER:ahwzgcipwxnlli}
+    password: ${DATABASE_PASSWORD:72a56540efa62775227fa264035f2fbba2dcbe6022ae93f897d6e05228c6594e}
     tomcat:
       validation-query: SELECT 1
       test-on-borrow: true
