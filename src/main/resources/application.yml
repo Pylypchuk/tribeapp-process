@@ -3,3 +3,26 @@ server:
   tomcat:
     max-swallow-size: -1
 
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${DATABASE_HOST:localhost}:${DATABASE_PORT:5432}/${DATABASE_NAME:tribeappprocess}
+    jdbcUrl: ${spring.datasource.url}
+    username: ${DATABASE_USER:dev}
+    password: ${DATABASE_PASSWORD:dev}
+    tomcat:
+      validation-query: SELECT 1
+      test-on-borrow: true
+
+camunda:
+  bpm:
+    admin-user:
+      id: ${CAMUNDA_USER_ID:admin}
+      password: ${CAMUNDA_USER_PASSWORD:admin}
+      firstName: ${CAMUNDA_USER_FIRSTNAME:admin}
+    filter:
+      create: All tasks
+    authorization:
+      enabled: true
+      enabled-for-custom-code: true

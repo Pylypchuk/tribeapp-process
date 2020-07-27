@@ -1,13 +1,14 @@
 package com.tribeapp.process;
 
+import org.camunda.bpm.spring.boot.starter.annotation.EnableProcessApplication;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-public class ProcessApplication {
 
+@SpringBootApplication
+@EnableProcessApplication
+public class ProcessApplication {
     public static void main(final String[] args) {
-        System.out.println("Process application started");
         SpringApplication.run(ProcessApplication.class, args);
     }
 }

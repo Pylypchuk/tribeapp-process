@@ -1,0 +1,110 @@
+<form role="form" name="form">
+    <script cam-script type="text/form-script">
+    camForm.on('form-loaded', function() {
+      camForm.variableManager.fetchVariable('model');
+      camForm.variableManager.fetchVariable('client');
+      camForm.variableManager.fetchVariable('abbr');
+      camForm.variableManager.fetchVariable('label');
+      camForm.variableManager.fetchVariable('collectionId');
+      camForm.variableManager.fetchVariable('modelId');
+      camForm.variableManager.fetchVariable('frameTextureId');
+      camForm.variableManager.fetchVariable('lensTextureId');
+      camForm.variableManager.fetchVariable('collectionName');
+      camForm.variableManager.fetchVariable('modelName');
+      camForm.variableManager.fetchVariable('frameTextureName');
+      camForm.variableManager.fetchVariable('lensTextureName');
+      camForm.variableManager.fetchVariable('sizes');
+      camForm.variableManager.fetchVariable('eyewireWidth');
+      camForm.variableManager.fetchVariable('lensWidth');
+      camForm.variableManager.fetchVariable('bridgeWidth');
+      camForm.variableManager.fetchVariable('templeLength');
+      camForm.variableManager.fetchVariable('lensHeight');
+      camForm.variableManager.fetchVariable('nosepadWidth');
+      camForm.variableManager.fetchVariable('nosepadHeight');
+      camForm.variableManager.fetchVariable('weightNoLens');
+
+      camForm.variableManager.fetchVariable('technicalSheet');
+      camForm.variableManager.fetchVariable('productColors');
+
+    });
+
+    camForm.on('variables-restored', function() {
+      $scope.model = camForm.variableManager.variableValue('model');
+      $scope.client = camForm.variableManager.variableValue('client');
+      $scope.abbr = camForm.variableManager.variableValue('abbr');
+      $scope.label = camForm.variableManager.variableValue('label');
+      $scope.collectionId = camForm.variableManager.variableValue('collectionId');
+      $scope.modelId = camForm.variableManager.variableValue('modelId');
+      $scope.frameTextureId = camForm.variableManager.variableValue('frameTextureId');
+      $scope.lensTextureId = camForm.variableManager.variableValue('lensTextureId');
+      $scope.collectionName = camForm.variableManager.variableValue('collectionName');
+      $scope.modelName = camForm.variableManager.variableValue('modelName');
+      $scope.frameTextureName = camForm.variableManager.variableValue('frameTextureName');
+      $scope.lensTextureName = camForm.variableManager.variableValue('lensTextureName');
+      $scope.sizes = camForm.variableManager.variableValue('sizes');
+      $scope.eyewireWidth = camForm.variableManager.variableValue('eyewireWidth');
+      $scope.lensWidth = camForm.variableManager.variableValue('lensWidth');
+      $scope.bridgeWidth = camForm.variableManager.variableValue('bridgeWidth');
+      $scope.templeLength = camForm.variableManager.variableValue('templeLength');
+      $scope.lensHeight = camForm.variableManager.variableValue('lensHeight');
+      $scope.nosepadWidth = camForm.variableManager.variableValue('nosepadWidth');
+      $scope.nosepadHeight = camForm.variableManager.variableValue('nosepadHeight');
+      $scope.weightNoLens = camForm.variableManager.variableValue('weightNoLens');
+
+      $scope.technicalSheet = camForm.variableManager.variableValue('technicalSheet');
+      $scope.productColors = camForm.variableManager.variableValue('productColors');
+      console.log("setting variables to scope");
+    });
+  </script>
+
+    <h2>Frame requested information:</h2>
+    <table class="table">
+        <tbody>
+        <tr><td>Model</td><td>{{model}}</td></tr>
+        <tr><td>Client</td><td>{{client}}</td></tr>
+        <tr><td>Abbr</td><td>{{abbr}}</td></tr>
+        <tr><td>Label</td><td>{{label}}</td></tr>
+        <tr><td>Collection ID</td><td>{{collectionId}}</td></tr>
+        <tr><td>Model ID</td><td>{{modelId}}</td></tr>
+        <tr><td>Frame Texture ID</td><td>{{frameTextureId}}</td></tr>
+        <tr><td>Lens Texture ID</td><td>{{lensTextureId}}</td></tr>
+        <tr><td>Collection Name</td><td>{{collectionName}}</td></tr>
+        <tr><td>Model Name</td><td>{{modelName}}</td></tr>
+        <tr><td>Frame Texture Name</td><td>{{frameTextureName}}</td></tr>
+        <tr><td>Lens Texture Name</td><td>{{lensTextureName}}</td></tr>
+        <tr><td>Sizes</td><td>{{sizes}}</td></tr>
+        <tr><td>Eyewire width</td><td>{{eyewireWidth}}</td></tr>
+        <tr><td>Lens width</td><td>{{lensWidth}}</td></tr>
+        <tr><td>Bridge width</td><td>{{bridgeWidth}}</td></tr>
+        <tr><td>Temple length</td><td>{{templeLength}}</td></tr>
+        <tr><td>Lens height</td><td>{{lensHeight}}</td></tr>
+        <tr><td>Nosepad width</td><td>{{nosepadWidth}}</td></tr>
+        <tr><td>Nosepad height</td><td>{{nosepadHeight}}</td></tr>
+        <tr><td>Weight no lens</td><td>{{weightNoLens}}</td></tr>
+
+        <tr><td>CAD file</td><td><a cam-file-download="cadFile"></a></td></tr>
+        <tr><td>Technical sheet</td><td>{{technicalSheet}}</td></tr>
+
+
+        <tr><td>Product photo</td><td>
+            <a cam-file-download="productPhotoOne"></a>
+            <a cam-file-download="productPhotoTwo"></a>
+            <a cam-file-download="productPhotoThree"></a>
+            <a cam-file-download="productPhotoFour"></a>
+        </td></tr>
+
+        <tr><td>RGB colors</td><td>{{productColors}}</td></tr>
+        </tbody>
+    </table>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="readyForDigitization-field">Ready for digitization ?</label>
+        <div class="col-sm-10">
+            <select required cam-variable-name="readyForDigitization" class="form-control"
+                    cam-variable-type="String">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+    </div>
+</form>
