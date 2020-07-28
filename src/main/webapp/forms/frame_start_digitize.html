@@ -22,10 +22,7 @@
       camForm.variableManager.fetchVariable('nosepadWidth');
       camForm.variableManager.fetchVariable('nosepadHeight');
       camForm.variableManager.fetchVariable('weightNoLens');
-
-      camForm.variableManager.fetchVariable('technicalSheet');
-      camForm.variableManager.fetchVariable('productColors');
-
+      camForm.variableManager.fetchVariable('digitizeComment');
     });
 
     camForm.on('variables-restored', function() {
@@ -50,14 +47,17 @@
       $scope.nosepadWidth = camForm.variableManager.variableValue('nosepadWidth');
       $scope.nosepadHeight = camForm.variableManager.variableValue('nosepadHeight');
       $scope.weightNoLens = camForm.variableManager.variableValue('weightNoLens');
+      $scope.digitizeComment = camForm.variableManager.variableValue('digitizeComment');
 
-      $scope.technicalSheet = camForm.variableManager.variableValue('technicalSheet');
-      $scope.productColors = camForm.variableManager.variableValue('productColors');
       console.log("setting variables to scope");
     });
   </script>
 
-    <h2>Frame requested information:</h2>
+    <div style="color: red;">
+        {{digitizeComment}}
+    </div>
+
+    <h3>Frame information:</h3>
     <table class="table">
         <tbody>
         <tr><td>Model</td><td>{{model}}</td></tr>
@@ -81,19 +81,6 @@
         <tr><td>Nosepad width</td><td>{{nosepadWidth}}</td></tr>
         <tr><td>Nosepad height</td><td>{{nosepadHeight}}</td></tr>
         <tr><td>Weight no lens</td><td>{{weightNoLens}}</td></tr>
-
-        <tr><td>CAD file</td><td><a cam-file-download="cadFile"></a></td></tr>
-        <tr><td>Technical sheet</td><td>{{technicalSheet}}</td></tr>
-
-
-        <tr><td>Product photo</td><td>
-            <a cam-file-download="productPhotoOne"></a>
-            <a cam-file-download="productPhotoTwo"></a>
-            <a cam-file-download="productPhotoThree"></a>
-            <a cam-file-download="productPhotoFour"></a>
-        </td></tr>
-
-        <tr><td>RGB colors</td><td>{{productColors}}</td></tr>
         </tbody>
     </table>
 
@@ -102,7 +89,8 @@
         <label class="col-sm-2 col-form-label" for="cadFileWithTexture-field">CAD file plus texture</label>
         <div class="col-sm-10"><input type="file"
                                       cam-variable-name="cadFileWithTexture"
-                                      cam-variable-type="File"/>
+                                      cam-variable-type="File"
+                                      cam-max-filesize="10000000" />
         </div>
     </div>
 
