@@ -5,10 +5,16 @@
   </bpmn:collaboration>
   <bpmn:process id="FrameDigitization" name="FrameDigitization" isExecutable="true">
     <bpmn:laneSet id="LaneSet_03ippbh" />
-    <bpmn:startEvent id="StartEvent_1" name="Start frame digitization" camunda:formKey="embedded:app:forms/start_frame_digitization.html" camunda:initiator="assignee">
+    <bpmn:startEvent id="StartEvent_1" name="Start frame digitization" camunda:initiator="assignee">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="label" label="Label" type="string" />
+          <camunda:formField id="model" label="Model" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
       <bpmn:outgoing>SequenceFlow_1n8ggp5</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:userTask id="Task_1v1hrvw" name="Upload information" camunda:formKey="embedded:app:forms/upload_frame_digitization.html" camunda:candidateGroups="labeluser">
+    <bpmn:userTask id="Task_1v1hrvw" name="Provide information" camunda:formKey="embedded:app:forms/provide_information.html" camunda:candidateGroups="labeluser">
       <bpmn:incoming>SequenceFlow_1n8ggp5</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_0bxao9h</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0ld2ubj</bpmn:outgoing>

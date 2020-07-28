@@ -23,9 +23,6 @@
       camForm.variableManager.fetchVariable('nosepadHeight');
       camForm.variableManager.fetchVariable('weightNoLens');
 
-      camForm.variableManager.fetchVariable('technicalSheet');
-      camForm.variableManager.fetchVariable('productColors');
-
     });
 
     camForm.on('variables-restored', function() {
@@ -50,9 +47,6 @@
       $scope.nosepadWidth = camForm.variableManager.variableValue('nosepadWidth');
       $scope.nosepadHeight = camForm.variableManager.variableValue('nosepadHeight');
       $scope.weightNoLens = camForm.variableManager.variableValue('weightNoLens');
-
-      $scope.technicalSheet = camForm.variableManager.variableValue('technicalSheet');
-      $scope.productColors = camForm.variableManager.variableValue('productColors');
       console.log("setting variables to scope");
     });
   </script>
@@ -82,19 +76,6 @@
         <tr><td>Nosepad height</td><td>{{nosepadHeight}}</td></tr>
         <tr><td>Weight no lens</td><td>{{weightNoLens}}</td></tr>
 
-        <tr><td>CAD file</td><td><a cam-file-download="cadFile"></a></td></tr>
-        <tr><td>Technical sheet</td><td>{{technicalSheet}}</td></tr>
-
-
-        <tr><td>Product photo</td><td>
-            <a cam-file-download="productPhotoOne"></a>
-            <a cam-file-download="productPhotoTwo"></a>
-            <a cam-file-download="productPhotoThree"></a>
-            <a cam-file-download="productPhotoFour"></a>
-        </td></tr>
-
-        <tr><td>RGB colors</td><td>{{productColors}}</td></tr>
-
         <tr><td>CAD file plus texture</td><td><a cam-file-download="cadFileWithTexture"></a></td></tr>
         </tbody>
     </table>
@@ -108,6 +89,14 @@
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
             </select>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="digitizeComment-field">Comment</label>
+        <div class="col-sm-10">
+            <textarea cam-variable-name="digitizeComment" class="form-control"
+                      cam-variable-type="String"></textarea>
         </div>
     </div>
 
