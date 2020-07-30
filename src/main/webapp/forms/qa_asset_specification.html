@@ -22,7 +22,7 @@
 
     camForm.on('variables-restored', function() {
       $scope.model = camForm.variableManager.variableValue('model');
-      $scope.model = camForm.variableManager.variableValue('label');
+      $scope.label = camForm.variableManager.variableValue('label');
       $scope.collectionName = camForm.variableManager.variableValue('collectionName');
       $scope.modelName = camForm.variableManager.variableValue('modelName');
       $scope.frameTextureName = camForm.variableManager.variableValue('frameTextureName');
