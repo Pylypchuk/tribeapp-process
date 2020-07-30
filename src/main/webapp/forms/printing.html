@@ -1,0 +1,25 @@
+<form role="form" name="form">
+    <h3>Printing</h3>
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>File 1</td>
+                <td><a cam-file-download="file1"></a></td>
+            </tr>
+            <tr>
+                <td>File 2</td>
+                <td><a cam-file-download="file2"></a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="printingAndFinished-field">Printed and finished date</label>
+        <div class="col-sm-10"><input required cam-variable-name="printingAndFinished" cam-variable-type="String" class="form-control"/></div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="frameShipped-field">Frame shipped date</label>
+        <div class="col-sm-10"><input required cam-variable-name="frameShipped" cam-variable-type="String" class="form-control"/></div>
+    </div>
+</form>
