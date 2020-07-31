@@ -2,13 +2,7 @@
     <script cam-script type="text/form-script">
     camForm.on('form-loaded', function() {
       camForm.variableManager.fetchVariable('model');
-      camForm.variableManager.fetchVariable('client');
-      camForm.variableManager.fetchVariable('abbr');
       camForm.variableManager.fetchVariable('label');
-      camForm.variableManager.fetchVariable('collectionId');
-      camForm.variableManager.fetchVariable('modelId');
-      camForm.variableManager.fetchVariable('frameTextureId');
-      camForm.variableManager.fetchVariable('lensTextureId');
       camForm.variableManager.fetchVariable('collectionName');
       camForm.variableManager.fetchVariable('modelName');
       camForm.variableManager.fetchVariable('frameTextureName');
@@ -22,18 +16,13 @@
       camForm.variableManager.fetchVariable('nosepadWidth');
       camForm.variableManager.fetchVariable('nosepadHeight');
       camForm.variableManager.fetchVariable('weightNoLens');
-      camForm.variableManager.fetchVariable('digitizeComment');
+      camForm.variableManager.fetchVariable('baseCurvature');
+      camForm.variableManager.fetchVariable('templeCurvature');
     });
 
     camForm.on('variables-restored', function() {
       $scope.model = camForm.variableManager.variableValue('model');
-      $scope.client = camForm.variableManager.variableValue('client');
-      $scope.abbr = camForm.variableManager.variableValue('abbr');
       $scope.label = camForm.variableManager.variableValue('label');
-      $scope.collectionId = camForm.variableManager.variableValue('collectionId');
-      $scope.modelId = camForm.variableManager.variableValue('modelId');
-      $scope.frameTextureId = camForm.variableManager.variableValue('frameTextureId');
-      $scope.lensTextureId = camForm.variableManager.variableValue('lensTextureId');
       $scope.collectionName = camForm.variableManager.variableValue('collectionName');
       $scope.modelName = camForm.variableManager.variableValue('modelName');
       $scope.frameTextureName = camForm.variableManager.variableValue('frameTextureName');
@@ -47,50 +36,60 @@
       $scope.nosepadWidth = camForm.variableManager.variableValue('nosepadWidth');
       $scope.nosepadHeight = camForm.variableManager.variableValue('nosepadHeight');
       $scope.weightNoLens = camForm.variableManager.variableValue('weightNoLens');
-      $scope.digitizeComment = camForm.variableManager.variableValue('digitizeComment');
+
+      $scope.baseCurvature = camForm.variableManager.variableValue('baseCurvature');
+      $scope.templeCurvature = camForm.variableManager.variableValue('templeCurvature');
 
       console.log("setting variables to scope");
     });
   </script>
 
-    <div style="color: red;">
-        {{digitizeComment}}
-    </div>
-
-    <h3>Frame information:</h3>
+    <h3>Asset specification:</h3>
     <table class="table">
         <tbody>
         <tr><td>Model</td><td>{{model}}</td></tr>
-        <tr><td>Client</td><td>{{client}}</td></tr>
-        <tr><td>Abbr</td><td>{{abbr}}</td></tr>
         <tr><td>Label</td><td>{{label}}</td></tr>
-        <tr><td>Collection ID</td><td>{{collectionId}}</td></tr>
-        <tr><td>Model ID</td><td>{{modelId}}</td></tr>
-        <tr><td>Frame Texture ID</td><td>{{frameTextureId}}</td></tr>
-        <tr><td>Lens Texture ID</td><td>{{lensTextureId}}</td></tr>
         <tr><td>Collection Name</td><td>{{collectionName}}</td></tr>
         <tr><td>Model Name</td><td>{{modelName}}</td></tr>
         <tr><td>Frame Texture Name</td><td>{{frameTextureName}}</td></tr>
         <tr><td>Lens Texture Name</td><td>{{lensTextureName}}</td></tr>
-        <tr><td>Sizes</td><td>{{sizes}}</td></tr>
-        <tr><td>Eyewire width</td><td>{{eyewireWidth}}</td></tr>
-        <tr><td>Lens width</td><td>{{lensWidth}}</td></tr>
-        <tr><td>Bridge width</td><td>{{bridgeWidth}}</td></tr>
-        <tr><td>Temple length</td><td>{{templeLength}}</td></tr>
-        <tr><td>Lens height</td><td>{{lensHeight}}</td></tr>
-        <tr><td>Nosepad width</td><td>{{nosepadWidth}}</td></tr>
-        <tr><td>Nosepad height</td><td>{{nosepadHeight}}</td></tr>
+        <tr><td>Eyewire width (in mm)</td><td>{{eyewireWidth}}</td></tr>
+        <tr><td>Lens width (in mm)</td><td>{{lensWidth}}</td></tr>
+        <tr><td>Bridge width (in mm)</td><td>{{bridgeWidth}}</td></tr>
+        <tr><td>Temple length (in mm)</td><td>{{templeLength}}</td></tr>
+        <tr><td>Lens height (in mm)</td><td>{{lensHeight}}</td></tr>
+        <tr><td>Nosepad width (in mm)</td><td>{{nosepadWidth}}</td></tr>
+        <tr><td>Nosepad height (in mm)</td><td>{{nosepadHeight}}</td></tr>
         <tr><td>Weight no lens</td><td>{{weightNoLens}}</td></tr>
+        <tr><td>Base Curvature (in °)</td><td>{{baseCurvature}}</td></tr>
+        <tr><td>Temple Curvature (in °)</td><td>{{templeCurvature}}</td></tr>
+        <tr><td>Pictures</td><td>
+            <a cam-file-download="productPhoto1"></a>
+            <a cam-file-download="productPhoto2"></a>
+            <a cam-file-download="productPhoto3"></a>
+            <a cam-file-download="productPhoto4"></a>
+        </td></tr>
+        <tr><td>Created asset (CAD incl. texture)</td><td><a cam-file-download="cadFileWithTexture"></a></td></tr>
         </tbody>
     </table>
 
 
     <div class="form-group row">
-        <label class="col-sm-2 col-form-label" for="cadFileWithTexture-field">CAD file plus texture</label>
-        <div class="col-sm-10"><input type="file"
-                                      cam-variable-name="cadFileWithTexture"
-                                      cam-variable-type="File"
-                                      cam-max-filesize="10000000" />
+        <label class="col-sm-2 col-form-label" for="frameCompleted-field">Frame completed ?</label>
+        <div class="col-sm-10">
+            <select required cam-variable-name="frameCompleted" class="form-control"
+                    cam-variable-type="String">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="assetQaComment-field">Comment</label>
+        <div class="col-sm-10">
+            <textarea cam-variable-name="assetQaComment" class="form-control"
+                      cam-variable-type="String"></textarea>
         </div>
     </div>
 

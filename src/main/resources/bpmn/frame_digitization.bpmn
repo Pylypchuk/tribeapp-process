@@ -5,25 +5,31 @@
   </bpmn:collaboration>
   <bpmn:process id="FrameDigitization" name="FrameDigitization" isExecutable="true">
     <bpmn:laneSet id="LaneSet_03ippbh" />
-    <bpmn:startEvent id="StartEvent_1" name="Start frame digitization" camunda:initiator="assignee">
-      <bpmn:extensionElements>
-        <camunda:formData>
-          <camunda:formField id="label" label="Label" type="string" />
-          <camunda:formField id="model" label="Model" type="string" />
-        </camunda:formData>
-      </bpmn:extensionElements>
+    <bpmn:startEvent id="StartEvent_1" name="Start frame digitization" camunda:formKey="embedded:app:forms/start_frame_digitization.html">
       <bpmn:outgoing>SequenceFlow_1n8ggp5</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:userTask id="Task_1v1hrvw" name="Provide information" camunda:formKey="embedded:app:forms/provide_information.html" camunda:candidateGroups="labeluser">
+    <bpmn:userTask id="Task_Asset_Specification" name="Asset specification" camunda:formKey="embedded:app:forms/asset_specification.html" camunda:assignee="${label}" camunda:candidateGroups="labeluser">
+      <bpmn:documentation>Asset specification</bpmn:documentation>
+      <bpmn:extensionElements>
+        <camunda:taskListener class="com.tribeapp.process.listener.TaskNameBeautifier" event="create" />
+      </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_1n8ggp5</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_0bxao9h</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0ld2ubj</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Task_13h0g5e" name="Ready for digitization ?" camunda:formKey="embedded:app:forms/frame_digitisation_information.html" camunda:candidateGroups="camunda-admin">
+    <bpmn:userTask id="Task_QA_Asset_Specification" name="QA asset specification" camunda:formKey="embedded:app:forms/qa_asset_specification.html" camunda:candidateGroups="camunda-admin">
+      <bpmn:documentation>QA asset specification</bpmn:documentation>
+      <bpmn:extensionElements>
+        <camunda:taskListener class="com.tribeapp.process.listener.TaskNameBeautifier" event="create" />
+      </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0ld2ubj</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0cxa97y</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Task_0zm5anu" name="Start digitize" camunda:formKey="embedded:app:forms/frame_start_digitize.html" camunda:candidateGroups="3dartist">
+    <bpmn:userTask id="Task_Asset_Creation" name="Asset creation" camunda:formKey="embedded:app:forms/asset_creation.html" camunda:candidateGroups="3dartist">
+      <bpmn:documentation>Asset creation</bpmn:documentation>
+      <bpmn:extensionElements>
+        <camunda:taskListener class="com.tribeapp.process.listener.TaskNameBeautifier" event="create" />
+      </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_186hkr5</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_05bk86m</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_09ygik1</bpmn:outgoing>
@@ -33,7 +39,11 @@
       <bpmn:outgoing>SequenceFlow_186hkr5</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_0bxao9h</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:userTask id="Task_1bxmxcl" name="QA check" camunda:formKey="embedded:app:forms/frame_qa_check.html" camunda:candidateGroups="camunda-admin">
+    <bpmn:userTask id="Task_Asset_QA" name="Asset QA" camunda:formKey="embedded:app:forms/asset_qa.html" camunda:candidateGroups="camunda-admin">
+      <bpmn:documentation>Asset QA</bpmn:documentation>
+      <bpmn:extensionElements>
+        <camunda:taskListener class="com.tribeapp.process.listener.TaskNameBeautifier" event="create" />
+      </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_09ygik1</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0zcc2cj</bpmn:outgoing>
     </bpmn:userTask>
@@ -45,21 +55,21 @@
     <bpmn:endEvent id="EndEvent_17vp7j3" name="Finish frame digitization">
       <bpmn:incoming>SequenceFlow_19haht0</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="SequenceFlow_0cxa97y" sourceRef="Task_13h0g5e" targetRef="ExclusiveGateway_1c0nnex" />
-    <bpmn:sequenceFlow id="SequenceFlow_186hkr5" name="Yes" sourceRef="ExclusiveGateway_1c0nnex" targetRef="Task_0zm5anu">
+    <bpmn:sequenceFlow id="SequenceFlow_0cxa97y" sourceRef="Task_QA_Asset_Specification" targetRef="ExclusiveGateway_1c0nnex" />
+    <bpmn:sequenceFlow id="SequenceFlow_186hkr5" name="Yes" sourceRef="ExclusiveGateway_1c0nnex" targetRef="Task_Asset_Creation">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{readyForDigitization == 'Yes'}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="SequenceFlow_09ygik1" sourceRef="Task_0zm5anu" targetRef="Task_1bxmxcl" />
-    <bpmn:sequenceFlow id="SequenceFlow_1n8ggp5" sourceRef="StartEvent_1" targetRef="Task_1v1hrvw" />
-    <bpmn:sequenceFlow id="SequenceFlow_0ld2ubj" sourceRef="Task_1v1hrvw" targetRef="Task_13h0g5e" />
-    <bpmn:sequenceFlow id="SequenceFlow_0bxao9h" name="No" sourceRef="ExclusiveGateway_1c0nnex" targetRef="Task_1v1hrvw">
+    <bpmn:sequenceFlow id="SequenceFlow_09ygik1" sourceRef="Task_Asset_Creation" targetRef="Task_Asset_QA" />
+    <bpmn:sequenceFlow id="SequenceFlow_1n8ggp5" sourceRef="StartEvent_1" targetRef="Task_Asset_Specification" />
+    <bpmn:sequenceFlow id="SequenceFlow_0ld2ubj" sourceRef="Task_Asset_Specification" targetRef="Task_QA_Asset_Specification" />
+    <bpmn:sequenceFlow id="SequenceFlow_0bxao9h" name="No" sourceRef="ExclusiveGateway_1c0nnex" targetRef="Task_Asset_Specification">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{readyForDigitization == 'No'}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="SequenceFlow_0zcc2cj" name="Completed ?" sourceRef="Task_1bxmxcl" targetRef="ExclusiveGateway_0ui9zf1" />
+    <bpmn:sequenceFlow id="SequenceFlow_0zcc2cj" name="Completed ?" sourceRef="Task_Asset_QA" targetRef="ExclusiveGateway_0ui9zf1" />
     <bpmn:sequenceFlow id="SequenceFlow_19haht0" name="Yes" sourceRef="ExclusiveGateway_0ui9zf1" targetRef="EndEvent_17vp7j3">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{frameCompleted == 'Yes'}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="SequenceFlow_05bk86m" name="No" sourceRef="ExclusiveGateway_0ui9zf1" targetRef="Task_0zm5anu">
+    <bpmn:sequenceFlow id="SequenceFlow_05bk86m" name="No" sourceRef="ExclusiveGateway_0ui9zf1" targetRef="Task_Asset_Creation">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{frameCompleted == 'No'}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
   </bpmn:process>
@@ -68,19 +78,19 @@
       <bpmndi:BPMNShape id="Participant_0lz3410_di" bpmnElement="Participant_0lz3410" isHorizontal="true">
         <dc:Bounds x="142" y="81" width="1088" height="298" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="UserTask_1fb84x8_di" bpmnElement="Task_1bxmxcl">
+      <bpmndi:BPMNShape id="UserTask_1fb84x8_di" bpmnElement="Task_Asset_QA">
         <dc:Bounds x="837" y="198" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="UserTask_1mw2zsz_di" bpmnElement="Task_0zm5anu">
+      <bpmndi:BPMNShape id="UserTask_1mw2zsz_di" bpmnElement="Task_Asset_Creation">
         <dc:Bounds x="681" y="198" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ExclusiveGateway_1c0nnex_di" bpmnElement="ExclusiveGateway_1c0nnex" isMarkerVisible="true">
         <dc:Bounds x="591" y="213" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="UserTask_0fewch7_di" bpmnElement="Task_13h0g5e">
+      <bpmndi:BPMNShape id="UserTask_0fewch7_di" bpmnElement="Task_QA_Asset_Specification">
         <dc:Bounds x="451" y="198" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="UserTask_0vwvc27_di" bpmnElement="Task_1v1hrvw">
+      <bpmndi:BPMNShape id="UserTask_0vwvc27_di" bpmnElement="Task_Asset_Specification">
         <dc:Bounds x="309" y="198" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">

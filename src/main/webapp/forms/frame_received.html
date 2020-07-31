@@ -1,0 +1,187 @@
+<form role="form" name="form">
+    <script cam-script type="text/form-script">
+    camForm.on('form-loaded', function() {
+      camForm.variableManager.fetchVariable('orderId');
+      camForm.variableManager.fetchVariable('customerId');
+      camForm.variableManager.fetchVariable('fullName');
+      camForm.variableManager.fetchVariable('orderDate');
+      camForm.variableManager.fetchVariable('frameType');
+      camForm.variableManager.fetchVariable('lensType');
+      camForm.variableManager.fetchVariable('modelName');
+      camForm.variableManager.fetchVariable('modelColor');
+      camForm.variableManager.fetchVariable('blueFilter');
+      camForm.variableManager.fetchVariable('sphLeft');
+      camForm.variableManager.fetchVariable('sphRight');
+      camForm.variableManager.fetchVariable('cylLeft');
+      camForm.variableManager.fetchVariable('cylRight');
+      camForm.variableManager.fetchVariable('axiLeft');
+      camForm.variableManager.fetchVariable('axiRight');
+      camForm.variableManager.fetchVariable('addLeft');
+      camForm.variableManager.fetchVariable('addRight');
+      camForm.variableManager.fetchVariable('pdLeft');
+      camForm.variableManager.fetchVariable('pdRight');
+      camForm.variableManager.fetchVariable('faceWidth');
+      camForm.variableManager.fetchVariable('frontSize');
+      camForm.variableManager.fetchVariable('templeSize');
+      camForm.variableManager.fetchVariable('calculationFrontSize');
+      camForm.variableManager.fetchVariable('calculationTempleSize');
+      camForm.variableManager.fetchVariable('printingAndFinished');
+      camForm.variableManager.fetchVariable('frameShipped');
+    });
+
+    camForm.on('variables-restored', function() {
+      $scope.orderId = camForm.variableManager.variableValue('orderId');
+      $scope.customerId = camForm.variableManager.variableValue('customerId');
+      $scope.fullName = camForm.variableManager.variableValue('fullName');
+      $scope.orderDate = camForm.variableManager.variableValue('orderDate');
+      $scope.frameType = camForm.variableManager.variableValue('frameType');
+      $scope.lensType = camForm.variableManager.variableValue('lensType');
+      $scope.modelName = camForm.variableManager.variableValue('modelName');
+      $scope.modelColor = camForm.variableManager.variableValue('modelColor');
+      $scope.blueFilter = camForm.variableManager.variableValue('blueFilter');
+      $scope.sphLeft = camForm.variableManager.variableValue('sphLeft');
+      $scope.sphRight = camForm.variableManager.variableValue('sphRight');
+      $scope.cylLeft = camForm.variableManager.variableValue('cylLeft');
+      $scope.cylRight = camForm.variableManager.variableValue('cylRight');
+      $scope.axiLeft = camForm.variableManager.variableValue('axiLeft');
+      $scope.axiRight = camForm.variableManager.variableValue('axiRight');
+      $scope.addLeft = camForm.variableManager.variableValue('addLeft');
+      $scope.addRight = camForm.variableManager.variableValue('addRight');
+      $scope.pdLeft = camForm.variableManager.variableValue('pdLeft');
+      $scope.pdRight = camForm.variableManager.variableValue('pdRight');
+      $scope.faceWidth = camForm.variableManager.variableValue('faceWidth');
+      $scope.fontSize = camForm.variableManager.variableValue('frontSize');
+      $scope.templeSize = camForm.variableManager.variableValue('templeSize');
+      $scope.calculationFrontSize = camForm.variableManager.variableValue('calculationFrontSize');
+      $scope.calculationTempleSize = camForm.variableManager.variableValue('calculationTempleSize');
+      $scope.printingAndFinished = camForm.variableManager.variableValue('printingAndFinished');
+      $scope.frameShipped = camForm.variableManager.variableValue('frameShipped');
+
+      console.log("setting variables to scope");
+    });
+  </script>
+
+    <h3>QA Check:</h3>
+    <table class="table">
+        <tbody>
+        <tr>
+            <td>OrderID</td>
+            <td>{{orderId}}</td>
+        </tr>
+        <tr>
+            <td>CustomerID</td>
+            <td>{{customerId}}</td>
+        </tr>
+        <tr>
+            <td>Full name</td>
+            <td>{{fullName}}</td>
+        </tr>
+        <tr>
+            <td>OrderDate</td>
+            <td>{{orderDate}}</td>
+        </tr>
+        <tr>
+            <td>FrameType</td>
+            <td>{{frameType}}</td>
+        </tr>
+        <tr>
+            <td>LensType</td>
+            <td>{{lensType}}</td>
+        </tr>
+        <tr>
+            <td>ModelName</td>
+            <td>{{modelName}}</td>
+        </tr>
+        <tr>
+            <td>ModelColor</td>
+            <td>{{modelColor}}</td>
+        </tr>
+        <tr>
+            <td>BlueFilter</td>
+            <td>{{blueFilter}}</td>
+        </tr>
+        <tr>
+            <td>SPH_left</td>
+            <td>{{sphLeft}}</td>
+        </tr>
+        <tr>
+            <td>SPH_right</td>
+            <td>{{sphRight}}</td>
+        </tr>
+        <tr>
+            <td>CYL_left</td>
+            <td>{{cylLeft}}</td>
+        </tr>
+        <tr>
+            <td>CYL_right</td>
+            <td>{{cylRight}}</td>
+        </tr>
+        <tr>
+            <td>AXI_left</td>
+            <td>{{axiLeft}}</td>
+        </tr>
+        <tr>
+            <td>AXI_right</td>
+            <td>{{axiRight}}</td>
+        </tr>
+        <tr>
+            <td>ADD_left</td>
+            <td>{{addLeft}}</td>
+        </tr>
+        <tr>
+            <td>ADD_right</td>
+            <td>{{addRight}}</td>
+        </tr>
+        <tr>
+            <td>PD_left</td>
+            <td>{{pdLeft}}</td>
+        </tr>
+        <tr>
+            <td>PD_right</td>
+            <td>{{pdRight}}</td>
+        </tr>
+        <tr>
+            <td>Face width (in mm)</td>
+            <td>{{faceWidth}}</td>
+        </tr>
+        <tr>
+            <td>Front size (in mm)</td>
+            <td>{{frontSize}}</td>
+        </tr>
+        <tr>
+            <td>Temple size (in mm)</td>
+            <td>{{templeSize}}</td>
+        </tr>
+        <tr>
+            <td>Calculation Front size (in mm)</td>
+            <td>{{calculationFrontSize}}</td>
+        </tr>
+        <tr>
+            <td>Calculation Temple size (in mm)</td>
+            <td>{{calculationTempleSize}}</td>
+        </tr>
+        <tr>
+            <td>File 1</td>
+            <td><a cam-file-download="file1"></a></td>
+        </tr>
+        <tr>
+            <td>File 2</td>
+            <td><a cam-file-download="file2"></a></td>
+        </tr>
+        <tr>
+            <td>Frame printed and finished date</td>
+            <td>{{printingAndFinished}}</td>
+        </tr>
+        <tr>
+            <td>Frame shipped date</td>
+            <td>{{frameShipped}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="frameReceived-field">Frame received date</label>
+        <div class="col-sm-10"><input required cam-variable-name="frameReceived" cam-variable-type="String" class="form-control"/></div>
+    </div>
+
+</form>

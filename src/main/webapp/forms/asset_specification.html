@@ -1,0 +1,108 @@
+<form role="form" name="form">
+    <script cam-script type="text/form-script">
+        camForm.on('form-loaded', function() {
+            camForm.variableManager.fetchVariable('assetSpecificationComment');
+        });
+
+        camForm.on('variables-restored', function() {
+            $scope.provideInformationComment = camForm.variableManager.variableValue('assetSpecificationComment');
+        });
+    </script>
+
+    <h3>Add asset specification:</h3>
+
+    <div style="color: red;">
+        {{assetSpecificationComment}}
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="collectionName-field">Collection Name</label>
+        <div class="col-sm-10"><input required cam-variable-name="collectionName" cam-variable-type="String" class="form-control" /></div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="modelName-field">Model Name</label>
+        <div class="col-sm-10"><input required cam-variable-name="modelName" cam-variable-type="String" class="form-control" /></div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="frameTextureName-field">Frame Texture Name</label>
+        <div class="col-sm-10"><input required cam-variable-name="frameTextureName" cam-variable-type="String" class="form-control" /></div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="lensTextureName-field">Lens Texture Name</label>
+        <div class="col-sm-10"><input required cam-variable-name="lensTextureName" cam-variable-type="String" class="form-control" /></div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="eyewireWidth-field">Eyewire width (in mm)</label>
+        <div class="col-sm-10"><input required cam-variable-name="eyewireWidth" cam-variable-type="Integer" class="form-control" /></div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="lensWidth-field">Lens width (in mm)</label>
+        <div class="col-sm-10"><input required cam-variable-name="lensWidth" cam-variable-type="Integer" class="form-control" /></div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="bridgeWidth-field">Bridge width (in mm)</label>
+        <div class="col-sm-10"><input required cam-variable-name="bridgeWidth" cam-variable-type="Integer" class="form-control" /></div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="templeLength-field">Temple length (in mm)</label>
+        <div class="col-sm-10"><input required cam-variable-name="templeLength" cam-variable-type="Integer" class="form-control" /></div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="lensHeight-field">Lens height (in mm)</label>
+        <div class="col-sm-10"><input required cam-variable-name="lensHeight" cam-variable-type="Integer" class="form-control" /></div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="nosepadWidth-field">Nosepad width (in mm)</label>
+        <div class="col-sm-10"><input required cam-variable-name="nosepadWidth" cam-variable-type="Integer" class="form-control" /></div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="nosepadHeight-field">Nosepad height (in mm)</label>
+        <div class="col-sm-10"><input required cam-variable-name="nosepadHeight" cam-variable-type="Integer" class="form-control" /></div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="weightNoLens-field">Weight no lens</label>
+        <div class="col-sm-10"><input required cam-variable-name="weightNoLens" cam-variable-type="String" class="form-control" /></div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="baseCurvature-field">Base Curvature (in °)</label>
+        <div class="col-sm-10"><input required cam-variable-name="baseCurvature" cam-variable-type="String" class="form-control" /></div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="templeCurvature-field">Temple Curvature (in °)</label>
+        <div class="col-sm-10"><input required cam-variable-name="templeCurvature" cam-variable-type="String" class="form-control" /></div>
+    </div>
+
+    <!-- Product photos -->
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="productPhoto1-field">Product photo</label>
+        <div class="col-sm-10"><input type="file" accept="image/*" cam-variable-name="productPhoto1" cam-variable-type="File" class="form-control" /></div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="productPhoto2-field">Product photo</label>
+        <div class="col-sm-10"><input type="file" accept="image/*" cam-variable-name="productPhoto2" cam-variable-type="File" class="form-control" /></div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="productPhoto3-field">Product photo</label>
+        <div class="col-sm-10"><input type="file" accept="image/*" cam-variable-name="productPhoto3" cam-variable-type="File" class="form-control" /></div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="productPhoto4-field">Product photo</label>
+        <div class="col-sm-10"><input type="file" accept="image/*" cam-variable-name="productPhoto4" cam-variable-type="File" class="form-control" /></div>
+    </div>
+</form>
