@@ -1,6 +1,5 @@
 package com.tribeapp.process.listener;
 
-import com.tribeapp.process.utils.CamundaVariableNames;
 import org.camunda.bpm.engine.delegate.DelegateTask;
 import org.camunda.bpm.engine.delegate.TaskListener;
 import org.springframework.stereotype.Component;
